@@ -747,14 +747,18 @@ Sizzle is good for finding elements for a selector, but not so good for telling 
 
 /* src/jquery.focusinout.js */
 
-(function($){	
-	
+(function($){
+
 	/**
 	 * Add focusin and focusout support to bind and live for browers other than IE. Designed to be usable in a delegated fashion (like $.live)
 	 * Copyright (c) 2007 Jörn Zaefferer
 	 */
 	if ($.support.focusinBubbles === undefined)  {
-		$.support.focusinBubbles = !!($.browser.msie);
+		if($.browser.msie === undefined)  {
+			$.support.focusinBubbles = false;
+		} else {
+			$.support.focusinBubbles = !!($.browser.msie);
+		}
 	}
 
 	if (!$.support.focusinBubbles && !$.event.special.focusin) {
@@ -777,11 +781,11 @@ Sizzle is good for finding elements for a selector, but not so good for telling 
 			};
 		});
 	}
-		
+
 	(function(){
 		//IE has some trouble with focusout with select and keyboard navigation
 		var activeFocus = null;
-	
+
 		$(document)
 			.bind('focusin', function(e){
 				var target = e.realTarget || e.target;
@@ -797,8 +801,9 @@ Sizzle is good for finding elements for a selector, but not so good for telling 
 				activeFocus = null;
 			});
 	})();
-	
-})(jQuery);;
+
+})(jQuery);
+;
 
 
 /* src/jquery.entwine.js */

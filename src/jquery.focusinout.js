@@ -5,11 +5,7 @@
 	 * Copyright (c) 2007 Jörn Zaefferer
 	 */
 	if ($.support.focusinBubbles === undefined)  {
-		try {
-			$.support.focusinBubbles = !!($.browser.msie);
-		} catch(err) {
-			$.support.focusinBubbles = (/msie|trident/i).test(navigator.userAgent);
-		}
+		$.support.focusinBubbles = !!($.browser.msie) && !$.browser.msie;
 	}
 
 	if (!$.support.focusinBubbles && !$.event.special.focusin) {

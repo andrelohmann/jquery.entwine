@@ -754,10 +754,12 @@ Sizzle is good for finding elements for a selector, but not so good for telling 
 	 * Copyright (c) 2007 Jörn Zaefferer
 	 */
 	if ($.support.focusinBubbles === undefined)  {
-		if($.browser.msie === undefined)  {
-			$.support.focusinBubbles = false;
-		} else {
+		try {
 			$.support.focusinBubbles = !!($.browser.msie);
+		} catch(err) {
+			if($.browser.msie === undefined)  {
+				$.support.focusinBubbles = (/msie|trident/i).test(navigator.userAgent);
+			}
 		}
 	}
 

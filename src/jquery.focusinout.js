@@ -8,9 +8,7 @@
 		try {
 			$.support.focusinBubbles = !!($.browser.msie);
 		} catch(err) {
-			if($.browser.msie === undefined)  {
-				$.support.focusinBubbles = (/msie|trident/i).test(navigator.userAgent);
-			}
+			$.support.focusinBubbles = (/msie|trident/i).test(navigator.userAgent);
 		}
 	}
 
